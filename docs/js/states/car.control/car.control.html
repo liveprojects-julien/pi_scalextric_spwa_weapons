@@ -1,0 +1,10 @@
+<span ng-bind="vm.throttle" ng-show="!vm.throttleError"></span>
+<span ng-show="vm.throttleError">Error</span>
+<div>
+    <input type="range" min="0" max="100" value="0" orient="vertical" class="throttle" ng-model="vm.throttle">
+    <input type="button" value="Stop" ng-click="vm.stop()"></input>
+    <h3 class="light">Sensor: {{vm.sensorValue}}</h3>
+</div>
+<span ng-bind="vm.actualThrottle"></span>
+<button ng-repeat="resource in vm.resources track by $index" ng-model="vm.resources[$index]" ng-click="vm.fireSpecialWeapon(resource.id)">{{resource.name}}</button>
+<select ng-model="vm.targetChannel" ng-options="c for c in vm.targetChannels" required></select>
