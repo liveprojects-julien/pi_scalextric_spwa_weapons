@@ -60,14 +60,15 @@
 
         
         vm.stop = stop;
-        vm.fireSpecialWeapon =  function weapondisable(){
-            $timeout(function ()
+        
+        vm.fireSpecialWeapon = function weapondisable(){
+            $timeout(function()
                 {
-                    fireSpecialWeapon;
-    
-                },WEAPON_DELAY_MS); 
                 console.log("WEAPONS DISABLED FOR 5 SECONDS")
-            }
+                },WEAPON_DELAY_MS);
+                fireSpecialWeapon; 
+                
+            };
         
         
 
