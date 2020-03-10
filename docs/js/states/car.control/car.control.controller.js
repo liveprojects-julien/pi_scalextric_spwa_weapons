@@ -27,12 +27,14 @@
         var stateName = "car_control";
         
         var changed = false;
+        var WEAPONS_DISABLED = false;
 
         var channel = $stateParams.channel;
 
         const DEFAULT_THROTTLE = 0;
         const DEFAULT_SENSOR = 1;
         const WEAPON_DELAY_MS = 5000;
+    
 
         /*
         throttle : is the throttle percentage the user is demanding.
@@ -44,6 +46,7 @@
         vm.actualThrottle = DEFAULT_THROTTLE;
         vm.resources = [];
         vm.stateName = stateName;
+        vm.WEAPONS_DISABLED = WEAPONS_DISABLED;
 
 
         vm.targetChannels = Array.apply(null, {
@@ -62,10 +65,14 @@
         vm.stop = stop;
 
         vm.fireSpecialWeapon = function weapondisable(){
+            console.log("WEAPONS DISABLED FOR 5 SECONDS")
+            vm.WEAPONS_DISABLED = true;
             $timeout(function(){
+
                 
-                console.log("WEAPONS DISABLED FOR 5 SECONDS")
+                vm.WEAPONS_DISABLED = false;
                 },WEAPON_DELAY_MS);
+                
                 fireSpecialWeapon; 
                 
             };

@@ -6,5 +6,5 @@
     <h3 class="light">Sensor: {{vm.sensorValue}}</h3>
 </div>
 <span ng-bind="vm.actualThrottle"></span>
-<button ng-repeat="resource in vm.resources track by $index" ng-model="vm.resources[$index]" ng-click="vm.fireSpecialWeapon(resource.id)">{{resource.name}}</button>
+<button ng-disabled="vm.WEAPONS_DISABLED" ng-repeat="resource in vm.resources track by $index" ng-model="vm.resources[$index]" ng-click="vm.fireSpecialWeapon(resource.id)">{{resource.name}}</button>
 <select ng-model="vm.targetChannel" ng-options="c for c in vm.targetChannels" required></select>
