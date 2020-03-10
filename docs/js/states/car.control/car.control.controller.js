@@ -10,7 +10,8 @@
         '$state',
         '$stateParams',
         'brokerDetails',
-        'messageService'
+        'messageService',
+        '$timeout'
         ];
     
     function carControlCtrl(
@@ -18,7 +19,8 @@
         $state,
         $stateParams, 
         brokerDetails,
-        messageService
+        messageService,
+        $timeout
     ) {
         
         var vm = this;
@@ -30,6 +32,7 @@
 
         const DEFAULT_THROTTLE = 0;
         const DEFAULT_SENSOR = 1;
+        const WEAPON_DELAY_MS = 5000;
 
         /*
         throttle : is the throttle percentage the user is demanding.
@@ -55,8 +58,17 @@
         //Used to show error message when there is a server error.
         vm.throttleError = false;
 
+        
         vm.stop = stop;
-        vm.fireSpecialWeapon = fireSpecialWeapon;
+        vm.fireSpecialWeapon =  function weapondisable(){
+            console.log("WEAPONS DISABLED FOR 5 SECONDS")
+            $timeout(function ()
+                {
+                    fireSpecialWeapon;
+    
+                },WEAPON_DELAY_MS);
+            }
+        
         
 
         var throttleTopic = `${brokerDetails.UUID}/control/${channel}/throttle`;
